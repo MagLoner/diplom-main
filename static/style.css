@@ -1,0 +1,161 @@
+body{
+    margin:0;
+    padding:0;
+    font-family: Arial, sans-serif;
+    background:#F2F2F2;
+    background-size: cover;
+    color: black;
+
+}
+.centerB{
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+div{
+	padding-top: 10px;
+}
+header{
+	background: #283975;
+	height: 133px;
+	display: flex;
+	align-content: center;
+	align-items: center;
+	font-size: 3rem;
+	font-weight:bold;
+	padding: 20px 0px 0px 14%;
+	color:#F9FFF4;
+}
+.mainBlock{
+    font-family: Franklin Gothic Medium, sans-serif;
+	display: flex;
+	width: 85%;
+	flex-direction: column;
+	/* text-align: center; */
+	align-self: center;
+    justify-content: center;
+	font-size: 16pt;
+}
+.Row{
+    align-self: center;
+	display: flex;
+	margin-right: 10px;
+	height: fit-content;
+	align-items: center;
+    flex-wrap: wrap;
+
+}
+select, input{
+	font-size: 14pt;
+    font-family: Franklin Gothic Medium, sans-serif;
+	margin-right: 10px;
+	padding: 1px;
+	height: fit-content;
+}
+.button{
+	font-size: 18pt;
+	height: fit-content;
+	padding: 5px;
+    font-weight: bold;
+    width: 80vw;
+    background: #d3dcff;
+    border: 1px solid #8088a4;
+}
+
+.tabs {
+    font-size: 0;
+  }
+
+  .tabs>input[type="radio"] {
+    display: none;
+  }
+
+  .tabs>div {
+    /* скрыть контент по умолчанию */
+    display: none;
+    border: 1px solid #e0e0e0;
+    padding: 10px 15px;
+    font-size: 16px;
+  }
+
+  /* отобразить контент, связанный с вабранной радиокнопкой (input type="radio") */
+  #tab-btn-1:checked~#content-1,
+  #tab-btn-2:checked~#content-2,
+  #tab-btn-3:checked~#content-3,
+  #tab-btn-4:checked~#content-4,
+  #tab-btn-5:checked~#content-5,
+  #tab-btn-6:checked~#content-6,
+  #tab-btn-7:checked~#content-7,
+  #tab-btn-8:checked~#content-8,
+  #tab-btn-9:checked~#content-9,
+  #tab-btn-10:checked~#content-10,
+  #tab-btn-11:checked~#content-11{
+    display: block;
+  }
+
+  .tabs>label {
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    user-select: none;
+    background-color: #c2c2c2;
+    border: 1px solid #e0e0e0;
+    padding: 2px 8px;
+    font-size: 20pt;
+    line-height: 1.5;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
+    cursor: pointer;
+    position: relative;
+    top: 1px;
+  }
+
+  .tabs>label:not(:first-of-type) {
+    border-left: none;
+  }
+
+  .tabs>input[type="radio"]:checked+label {
+
+	background: #d3dcff;
+    border-bottom: 1px solid #fff;
+  }
+table {
+    font-family: Tahoma, sans-serif;
+	width: 100%;
+	margin-bottom: 20px;
+	border: 1px solid #000000;
+	border-collapse: collapse;
+}
+table th {
+	font-weight: bold;
+	padding: 5px;
+    background: #d3dcff;
+	border: 2px solid #000000;
+    text-align: center;
+    vertical-align: top;
+    font-size: 14pt;
+    font-weight: bold;
+}
+table td {
+	border: 1px solid #000000;
+	padding: 5px;
+    font-size: 12pt;
+    vertical-align: top;
+    background: #ebf2f5;
+}
+.blacks td {
+    padding: 0px;
+    height: 1px;
+    background: black;
+}
+.topNubex {
+	position: fixed;
+	right: 45px;
+	bottom: 45px;
+    font-size: 30pt;
+     outline: none;
+  text-decoration: none;
+    color: black;
+   }
+a:visited {
+  color: black;
+}

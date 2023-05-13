@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Генерация расписания</title>
+	<link rel="stylesheet" type="text/css" href="../static/style.css">
+</head>
+<body>
+	<div class="centerB">
+		<header>
+			<p> Расписание 1 курса МК</p>
+		</header>
+	</div>
+	<div class="centerB">
+		<div class="mainBlock">
+
+			<div style="text-decoration-line: underline;font-size: 22pt; padding-bottom: 10px;">Изменить пару<br></div>
+			<text style="color: brown">Не удалось поставить пары:<br>
+			{{error}}</text>
+			<div class="Row">
+
+				Группа:&nbsp;&nbsp;
+				<select  id="groups">
+					{%for t in table%}
+					<option>{{t}}</option>
+					{%endfor%}
+				</select>
+				Неделя:&nbsp;&nbsp;
+				<select  id="week">
+					<option>Четная</option>
+					<option>Нечетная</option>
+				</select>
+				День недели:&nbsp;&nbsp;
+				<select  id="day">
+					<option>пн</option>
+					<option>вт</option>
+					<option>ср</option>
+					<option>чт</option>
+					<option>пт</option>
+				</select>
+				Пара:&nbsp;&nbsp;
+				<select  id="number">
+					<option>1</option>
+					<option>2</option>
+					<option>3</option>
+					<option>4</option>
+					<option>5</option>
+					<option>6</option>
+				</select>
+
+
+				<p style="color: darkred"> 🡆🡆🡆&nbsp;&nbsp;</p>
+
+
+				Неделя:&nbsp;&nbsp;
+				<select  id="week1">
+					<option>Четная</option>
+					<option>Нечетная</option>
+				</select>
+				День недели:&nbsp;&nbsp;
+				<select  id="day1">
+					<option>пн</option>
+					<option>вт</option>
+					<option>ср</option>
+					<option>чт</option>
+					<option>пт</option>
+				</select>
+				Пара:&nbsp;&nbsp;
+				<select  id="par">
+					<option>1</option>
+					<option>2</option>
+					<option>3</option>
+					<option>4</option>
+					<option>5</option>
+					<option>6</option>
+				</select>
+				Кабинет&nbsp;&nbsp;
+				<input type="text">
+
+
+			</div>
+			<div class="Row"><button class="button" onclick="setFileType()">Изменить</button></div>
+
+		</div>
+		<a href="#" class="topNubex">↑</a>
+		<div style="width: 70%;align-self:center">
+
+
+			<div class="tabs">
+				{% block tabs %}{% endblock %}
+				{%block groups%}{% endblock %}
+
+			</div>
+		</div>
+	</div>
+	<footer></footer>
+</body>
+</html>
+<!--Список
+
+-->

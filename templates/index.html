@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block tabs %}
+<input type="radio" name="tab-btn" id="tab-btn-1" value="" checked xmlns:width="http://www.w3.org/1999/xhtml">
+				<label for="tab-btn-1"> {{code[0]}} </label>
+		{% for t in range(1,code|length) %}
+			 <input type="radio" name="tab-btn" id="tab-btn-{{t+1}}" value="">
+  				<label for="tab-btn-{{t+1}}">{{code[t]}}</label>
+		{% endfor %}
+{% endblock %}
+
+{%block groups%}
+	{%for t in range(6) %}
+				<div id="content-{{t+1}}">
+					{%for s in range(0,num[t]|length )%}
+					<table>
+						<tr>
+						<th rowspan="2">Группа</th>
+						<th rowspan="2" style="width: 60px">День недели</th>
+						<th colspan="4">Нечетная неделя</th>
+						<th colspan="4">Четная неделя</th>
+						</tr>
+						<tr>
+						<th style="width: 60px">№ пары</th>
+						<th>Предмет</th>
+						<th>Преподаватель</th>
+						<th>Аудитория</th>
+						<th style="width: 60px">№ пары</th>
+						<th>Предмет</th>
+						<th>Преподаватель</th>
+						<th>Аудитория</th>
+						</tr>
+						{%for d in range(0,5) %}
+							{%for i in range(0,6) %}
+								<tr>
+									{% if d==0 and i==0%}
+									<th rowspan="36" style="width: 60px">{{(table.keys()|list) [num[t][s]]|e}}	</th>{% endif%}
+									{% if i==0%}
+										<th rowspan="6" style="width: 60px">
+										{% if d==0%}ПН{% endif%}
+										{% if d==1%}ВТ{% endif%}
+										{% if d==2%}СР{% endif%}
+										{% if d==3%}ЧТ{% endif%}
+										{% if d==4%}ПТ{% endif%}
+										</th>
+									{% endif%}
+									<th style="width: 40px;background: #efefef;">{{i+1}}</th>
+									<td style="width: 300px">{{((table[(table.keys()|list) [num[t][s]]|e])['even'][d])[i]['lesson']}} </td>
+									<td style="width: 70px">{{((table[(table.keys()|list) [num[t][s]]|e])['even'][d])[i]['teacher']}} </td>
+									<td style="width: 50px">{{((table[(table.keys()|list) [num[t][s]]|e])['even'][d])[i]['cabinet']}} </td>
+									<th style="width: 40px;background: #efefef;">{{i+1}}</th>
+									<td style="width: 300px">{{((table[(table.keys()|list) [num[t][s]]|e])['odd'][d])[i]['lesson']}} </td>
+									<td style="width: 70px">{{((table[(table.keys()|list) [num[t][s]]|e])['odd'][d])[i]['teacher']}} </td>
+									<td style="width: 50px"	>{{((table[(table.keys()|list) [num[t][s]]|e])['odd'][d])[i]['cabinet']}} </td>
+								</tr>
+							{% endfor %}
+							<tr class="blacks"><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+						{% endfor %}
+					</table>
+				{% endfor %}
+				</div>
+				{% endfor %}
+{% endblock %}
+
+<!---->
+
+<!--(table.keys()|list) [t]|e}-->

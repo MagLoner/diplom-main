@@ -1,0 +1,7 @@
+__pycache__/
+.vs
+*.xls
+*.xlsx
+*.txt
+!requirements.txt
+*.xlsx#

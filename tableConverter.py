@@ -3,6 +3,7 @@ from openpyxl import Workbook
 import sys
 import json
 
+
 def getListsFromFile():
     # загружаем файл, переданный программе в ее аргументах
     file = load_file()
@@ -12,6 +13,7 @@ def getListsFromFile():
     # на этом моменте получили целый лист, готовый к парсингу (selected_list)
 
     return lists
+
 
 def saveTimetableToFile(timetables):
     wb = Workbook()
@@ -26,30 +28,34 @@ def saveTimetableToFile(timetables):
         ws.column_dimensions['E'].width = 50
 
         timetable = timetables[timetable]
-        ws.cell(row=1,column=1).value = 'Чётная неделя'
+        ws.cell(row=1, column=1).value = 'Чётная неделя'
         for idx, day in enumerate(timetable['even']):
             for i, lesson in enumerate(day):
                 if lesson == '':
                     continue
                 else:
-                    ws.cell(row=i+2,column=idx+1).value = f'{i+1}. {lesson["lesson"]} / {lesson["teacher"]}'
-        ws.cell(row=14,column=1).value = 'Нечётная неделя'
+                    ws.cell(row=i + 2,
+                            column=idx + 1).value = f'{i + 1}. {lesson["lesson"]} / {lesson["teacher"]} / {lesson["cabinet"]}'
+        ws.cell(row=14, column=1).value = 'Чётная неделя'
         for idx, day in enumerate(timetable['odd']):
             for i, lesson in enumerate(day):
                 if lesson == '':
                     continue
                 else:
-                    ws.cell(row=i+15,column=idx+1).value = f'{i+1}. {lesson["lesson"]} / {lesson["teacher"]}'
+                    ws.cell(row=i + 15,
+                            column=idx + 1).value = f'{i + 1}. {lesson["lesson"]} / {lesson["teacher"]} / {lesson["cabinet"]}'
 
     del wb['Sheet']
     wb.save("result.xlsx")
     wb.close()
 
+
 def saveTimetableToJson(timetables, failed_lessons):
     result = {}
     result['timetables'] = timetables
     result['failed_lessons'] = failed_lessons
-    return json.dumps(result, indent=2)
+    return json.dumps(result)
+
 
 def select_list(file):
     # ввод листа от пользователя
@@ -61,15 +67,20 @@ def select_list(file):
     #         print(f"{idx+1}. {list_name}")
     #     selected_list = input("Введите число: ")
 
+    # лист с кабинетами
+    cabinets_list = 0  # первый по счету лист
+    cabinets_list = parse_list(file, cabinets_list)
+
     # лист с парами
-    lessons_list = 1 # второй по счету лист
+    lessons_list = 1  # второй по счету лист
     lessons_list = parse_list(file, lessons_list)
 
     # лист с заказными парами
-    ordered_lessons_list = 2 # третий по счету лист
+    ordered_lessons_list = 2  # третий по счету лист
     ordered_lessons_list = parse_list(file, ordered_lessons_list)
 
-    return [lessons_list, ordered_lessons_list]
+    return [cabinets_list, lessons_list, ordered_lessons_list]
+
 
 def parse_list(file, selected_list):
     try:
@@ -79,6 +90,7 @@ def parse_list(file, selected_list):
     except:
         print("Лист некорректен!")
         exit()
+
 
 def load_file():
     # проверяем наличие переданного файла
